@@ -7,6 +7,7 @@ from dash import Dash, html, dcc, Input, Output
 # Load and parse metadata
 metadata = pd.read_csv('cleaned_dataset/metadata.csv')
 
+port = int(os.environ.get('PORT', 5000))
 
 def parse_matlab_time(str_time):
     str_time = str_time.strip().strip('[]')
@@ -204,5 +205,5 @@ def update_plots(battery_id):
 
 
 # Run the app
-if __name__ == '__main__':
-    app.run_server(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port= port, debug=True)
